@@ -1,0 +1,48 @@
+<div class="flex h-full justify-center m-4">
+    <mat-card class="w-4/5">
+        <mat-card-content>
+            <form class="flex flex-col gap-4" [formGroup]="form">
+                <div class="flex flex-1 gap-4">
+                    <mat-form-field class="flex-1">
+                        <input
+                            matInput
+                            formControlName="title"
+                            placeholder="Title" />
+                    </mat-form-field>
+                    <mat-form-field class="flex-1">
+                        <mat-label>Category</mat-label>
+                        <input matInput formControlName="category" />
+                    </mat-form-field>
+                </div>
+
+                <input
+                    type="file"
+                    class="file-input"
+                    (change)="onFileSelected($event)"
+                    #fileUpload />
+
+                <div class="flex items-center gap-4 file-upload">
+                    <button
+                        mat-icon-button
+                        color="primary"
+                        (click)="fileUpload.click()">
+                        <mat-icon>attach_file</mat-icon>
+                    </button>
+                    {{ uploadedImageName || 'No file uploaded yet.' }}
+                </div>
+                <mat-form-field class="flex-1">
+                    <mat-label>Description</mat-label>
+                    <textarea
+                        matInput
+                        rows="4"
+                        formControlName="description"></textarea>
+                </mat-form-field>
+                <div class="self-end">
+                    <button mat-flat-button color="primary" role="submit">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,50 @@
+<div class="flex flex-col p-4">
+    <div class="flex-1 items-center">
+        <h2>Herzlich Willkommen kleiner Schatz!</h2>
+        <h4>"Hallo, habt ihr Hunger?"</h4>
+    </div>
+
+    <div class="flex">
+        <button
+            mat-flat-button
+            type="button"
+            color="primary"
+            (click)="addRecipe()">
+            Add recipe
+        </button>
+    </div>
+
+    <div class="flex flex-col">
+        <p>Beliebte Rezepte</p>
+        <div class="flex gap-4">
+            @for (food of foodDescription; track food) {
+                <mat-card class="flex-1">
+                    <mat-card-header>
+                        <mat-card-title>
+                            <h3 class="title">{{ food.title }}</h3>
+                        </mat-card-title>
+                        <mat-card-subtitle>{{
+                            food.category
+                        }}</mat-card-subtitle>
+                    </mat-card-header>
+                    <img
+                        mat-card-image
+                        src="{{ food.imgUrl }}"
+                        alt="RezeptFoto"
+                        class="card-image" />
+                    <mat-card-content>
+                        <p>{{ food.description }}</p>
+                        <mat-divider></mat-divider>
+                    </mat-card-content>
+                    <mat-card-footer>
+                        <mat-card-actions>
+                            @for (tag of food.tags; track tag) {
+                                <button mat-button>#{{ tag }}</button>
+                            }
+                        </mat-card-actions>
+                    </mat-card-footer>
+                </mat-card>
+            }
+        </div>
+    </div>
+</div>
